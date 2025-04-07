@@ -1,0 +1,41 @@
+Prompt
+You are tasked with creating a music recommendation system for a diary app. The diary app allows users to write diary entries and tag their emotions. The music recommendation system should recommend 3 songs based on the diary entry and the user's emotions. The system should also allow users to filter the recommendations based on the content of diary.
+Recommend 3 songs based on diary entries, emotions, and filters in input JSON format.
+
+input : json
+```json
+{
+    user_id: string,
+    diary: string,
+    emotions: string (optional)
+    filters: {
+        genre: string (optional),
+        artist: string (optional),
+        mood: string (optional)
+        year: string (optional)
+    }
+}
+```
+
+output : json
+```json
+{
+    musics: [
+        {
+            title: string,
+            artist: string,
+            url: string,
+        },
+        {
+            title: string,
+            artist: string,
+            url: string,
+        },
+        {
+            title: string,
+            artist: string,
+            url: string,
+        }
+    ]
+}
+```

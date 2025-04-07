@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- 달력 모듈 호출 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="/static/main.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        #user-info {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #logout {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .modal-content textarea,
+        .modal-content input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #saveDiary {
+            background-color: green;
+        }
+
+        #updateDiary {
+            background-color: blue;
+        }
+        #deleteDiary {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="todayMusic" style="display: none; text-align: center; padding: 20px; background-color: #f0f8ff;">
+        <h2>오늘의 음악</h2>
+        <div id="todayMusicContainer">
+        </div>
+    </div>
+
+    <button id="logout">로그아웃</button>
+    
+    <div id="user-info">
+        <p id="nickname"></p>
+    </div>
+
+    <div id="calendar"></div>
+
+    <div id="diaryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <h2 id="modalTitle">일기 조회</h2>
+            
+            <label for="diaryList">선택된 일기:</label>
+            <select id="diaryList"></select>
+
+ 
+            <label for="viewDiaryEmotion">감정:</label>
+            <textarea id="viewDiaryEmotion" rows="2" readonly></textarea>
+
+            
+            <label for="viewDiaryTitle">제목:</label>
+            <textarea id="viewDiaryTitle" rows="2" readonly></textarea>
+            
+            <label for="viewDiaryText">내용</label>
+            <textarea id="viewDiaryText" rows="10" readonly></textarea>
+            
+            <h2>일기 작성 및 수정</h2>
+            
+            <label for="diaryTitle">제목:</label>
+            <input type="text" id="diaryTitle" />
+            
+            <label for="writeDiaryText">내용:</label>
+            <textarea id="writeDiaryText" rows="10"></textarea>
+
+            <label for="diaryEmotion">감정 선택:</label>
+            
+            <select id="diaryEmotion">
+                <option value="angry">Angry</option>
+                <option value="sad">Sad</option>
+                <option value="anxiety">Anxiety</option>
+                <option value="calm">Calm</option>
+                <option value="happy">Happy</option>
+                <option value="surprised">Surprised</option>
+            </select>
+            
+            <button id="saveDiary">저장</button>
+            <button id="updateDiary">수정</button>
+            <button id="deleteDiary">삭제</button>
+
+            <div id="musicRecommendations">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
