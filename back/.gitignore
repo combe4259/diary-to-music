@@ -1,6 +1,1 @@
-back/config.py
-__pycache__/
-*.pyc
-*.log
-.DS_Store
-.env
+git rm --cached back/config.py
